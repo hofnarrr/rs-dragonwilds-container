@@ -1,0 +1,6 @@
+Components: contrib non-free
+X-Repolib-Name: debian-contrib-non-free
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp
+Suites: trixie trixie-updates
+Types: deb deb-src
+URIs: http://deb.debian.org/debian
