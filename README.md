@@ -1,10 +1,13 @@
 # RuneScape: Dragonwilds Docker image
 
-### build it.
+## build it.
+
+    $ git clone https://github.com/hofnarrr/rs-dragonwilds-container
+    $ cd rs-dragonwilds-container/
 
     $ docker build -f Dockerfile -t rs-dragonwilds:latest
 
-### run it.
+## run it.
 
 Run the image like you'd run the regular server exe.
 
@@ -28,7 +31,7 @@ on every start.
 See also [`examples/docker-compose.yml`](examples/docker-compose.yml) for
 a small Composefile example.
 
-#### installation and updates.
+### installation and updates.
 
 By default the image runs `steamcmd` to install or update the dedicated server
 before launching it. This can be disabled by setting the environment variable
@@ -36,7 +39,7 @@ before launching it. This can be disabled by setting the environment variable
 
     $ docker run -e RSDW_UPDATE_SERVER=0 rs-dragonwilds:latest
 
-#### configuration and savegames.
+### configuration and savegames.
 
 Configuration files (`DedicatedServer.ini`) and savegames may be supplied by
 mounting them into the container under `/config` and `/savegames` respectively.
@@ -52,5 +55,5 @@ the RS:DW install dir before starting the server process - on every startup.
 
 Some care must be taken as RS:DW may in some cases modify `DedicatedServer.ini`
 (and obviously savegames as well). E.g. during the first start a server GUID is
-generated and added to the config - mounted config should be updated
+generated and added to the config file - mounted config should be updated
 accordingly.
