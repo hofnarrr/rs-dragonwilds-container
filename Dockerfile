@@ -2,7 +2,7 @@ FROM debian:13-slim
 
 ENV USERNAME=rsdw
 ENV HOMEDIR=/opt/rsdw
-ENV SERVER_INSTALL_DIR=$HOMEDIR/server
+ENV RSDW_INSTALL_DIR=$HOMEDIR/server
 
 COPY files/debian-contrib-non-free.sources /etc/apt/sources.list.d/debian-contrib-non-free.sources
 
@@ -20,6 +20,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 COPY files/entrypoint.sh /entrypoint.sh
 
 USER $USERNAME
-WORKDIR $SERVER_INSTALL_DIR
+WORKDIR $RSDW_INSTALL_DIR
+VOLUME [ "$RSDW_INSTALL_DIR" ]
 
 ENTRYPOINT [ "/entrypoint.sh" ]
