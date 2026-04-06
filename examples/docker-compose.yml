@@ -1,0 +1,21 @@
+# $ docker compose up --build
+
+services:
+  rsdw:
+    build: ..
+    image: rs-dragonwilds:latest
+    restart: unless-stopped
+    init: true
+
+    command: -Port=1337
+
+    ports:
+      - "7777:1337/udp"
+
+    volumes:
+      - rsdw-server:/opt/rsdw/server:rw
+      - ./cfg/:/config:ro
+      - ./saves/:/savegames:ro
+
+volumes:
+  rsdw-server:
