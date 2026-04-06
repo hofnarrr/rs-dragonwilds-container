@@ -11,7 +11,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     echo 'steamcmd steam/question string I AGREE' | debconf-set-selections && \
     apt-get update -y && \
     apt-get install -y steamcmd && \
-    apt-get install -y --reinstall ca-certificates && \
+    apt-get install -y --reinstall locales ca-certificates && \
+    echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     useradd -Md $HOMEDIR $USERNAME && \
     mkdir $HOMEDIR && \
